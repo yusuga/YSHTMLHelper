@@ -22,11 +22,17 @@
     NSString *urlStr;
     urlStr = @"http://www.apple.com";
     
+//    NSLog(@"%@", [YSHTMLHelper htmlForURLString:urlStr withEncoding:NSASCIIStringEncoding]);
+    NSLog(@"favicon image urls: %@", [YSHTMLHelper faviconURLsForURLString:urlStr]);
+    NSLog(@"favicon image urls: %@", [YSHTMLHelper faviconURLsForURLString:@"http://store.apple.com/jp?aid=www-k2-mac%20-%20index%2Ftab&cp=k2-mac%20"]);    
+    
+#if 0
     uint64_t n = dispatch_benchmark(10, ^{
 //        [YSHTMLHelper htmlForURLString:urlStr withEncoding:NSASCIIStringEncoding];
 //        [YSHTMLHelper ogpForURLString:urlStr property:YSHTMLHelperOGPPropertyImage];
     });
     NSLog(@"n = %llu [ns]",n);
+#endif
 }
 
 @end
