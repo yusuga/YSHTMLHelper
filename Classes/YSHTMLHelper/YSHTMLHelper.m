@@ -10,6 +10,8 @@
 
 @implementation YSHTMLHelper
 
+#pragma mark - html
+
 + (NSString*)htmlForURLString:(NSString*)urlStr withEncoding:(NSStringEncoding)encoding
 {
     NSURL *url = [NSURL URLWithString:urlStr];
@@ -30,6 +32,10 @@
     });
 }
 
+#pragma mark - OGP
+
+/* http://ogp.me */
+
 + (NSString*)ogpForURLString:(NSString*)urlStr property:(YSHTMLHelperOGPProperty)property
 {
     NSString *html = [self htmlForURLString:urlStr withEncoding:NSASCIIStringEncoding];
@@ -45,6 +51,31 @@
             if (completion) completion(propertyStr);
         });
     });
+}
+
+#pragma mark - favicon
+
+/**
+ favicon
+ http://hail2u.net/documents/favicon-cheat-sheet-ja.html
+ 
+ apple-touch-icon
+ https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html
+ https://developer.apple.com/jp/devcenter/ios/library/documentation/userexperience/conceptual/mobilehig/WebClipIcons/WebClipIcons.html
+ 
+ ex)
+ http://www.apple.com/apple-touch-icon.png
+ http://www.apple.com/favicon.ico
+ */
+
++ (NSArray *)faviconURLsForURLString:(NSString *)urlStr
+{
+    NSURL *url = [NSURL URLWithString:urlStr];
+    NSString *baseURLStr = [NSString stringWithFormat:@"%@://%@", url.scheme, url.host];
+    
+    return @[[baseURLStr stringByAppendingPathComponent:@"apple-touch-icon.png"],
+             [baseURLStr stringByAppendingPathComponent:@"apple-touch-icon-precomposed.png"],
+             [baseURLStr stringByAppendingPathComponent:@"favicon.ico"]];
 }
 
 #pragma mark - utility
