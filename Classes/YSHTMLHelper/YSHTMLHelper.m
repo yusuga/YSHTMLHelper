@@ -74,7 +74,6 @@
     NSString *baseURLStr = [NSString stringWithFormat:@"%@://%@", url.scheme, url.host];
     
     return @[[baseURLStr stringByAppendingPathComponent:@"apple-touch-icon.png"],
-             [baseURLStr stringByAppendingPathComponent:@"apple-touch-icon-precomposed.png"],
              [baseURLStr stringByAppendingPathComponent:@"favicon.ico"]];
 }
 
