@@ -68,13 +68,15 @@
  http://www.apple.com/favicon.ico
  */
 
-+ (NSArray *)faviconURLsForURLString:(NSString *)urlStr
++ (NSArray *)faviconURLsForURL:(NSURL*)url
 {
-    NSURL *url = [NSURL URLWithString:urlStr];
-    NSString *baseURLStr = [NSString stringWithFormat:@"%@://%@", url.scheme, url.host];
-    
-    return @[[baseURLStr stringByAppendingPathComponent:@"apple-touch-icon.png"],
-             [baseURLStr stringByAppendingPathComponent:@"favicon.ico"]];
+    if (url.scheme && url.host) {
+        NSString *baseURLStr = [NSString stringWithFormat:@"%@://%@", url.scheme, url.host];
+        
+        return @[[baseURLStr stringByAppendingPathComponent:@"apple-touch-icon.png"],
+                 [baseURLStr stringByAppendingPathComponent:@"favicon.ico"]];
+    }
+    return nil;
 }
 
 #pragma mark - utility

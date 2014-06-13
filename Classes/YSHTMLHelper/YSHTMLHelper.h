@@ -27,6 +27,6 @@ typedef void(^YSHTMLHelperGetStringCompletion)(NSString *str);
 + (NSString*)ogpForURLString:(NSString*)urlStr property:(YSHTMLHelperOGPProperty)property;
 + (void)ogpForURLString:(NSString*)urlStr property:(YSHTMLHelperOGPProperty)property completion:(YSHTMLHelperGetStringCompletion)completion;
 
-+ (NSArray*)faviconURLsForURLString:(NSString*)urlStr;
++ (NSArray *)faviconURLsForURL:(NSURL*)url;
 
 @end
